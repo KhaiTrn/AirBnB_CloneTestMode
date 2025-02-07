@@ -1,0 +1,56 @@
+.dark {
+  .ant-menu .ant-menu-item {
+    a {
+      color: white;
+    }
+    svg {
+      fill: white;
+    }
+  }
+  #navBar {
+    .navbar {
+      a.item_active {
+        background-color: #e789ba;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+  .ant-table-thead {
+    th.ant-table-cell {
+      background-color: rgb(19, 30, 56);
+      color: white;
+    }
+  }
+  .ant-table-tbody {
+    tr.ant-table-row {
+      background-color: rgb(19, 30, 56);
+      color: white;
+      .ant-table-cell-fix-right {
+        background-color: rgb(19, 30, 56);
+      }
+      .ant-table-cell-row-hover {
+        background-color: rgb(9, 15, 27) !important;
+      }
+    }
+  }
+}
+.ant-menu .ant-menu-item.ant-menu-item-selected {
+  svg {
+    fill: inherit !important;
+  }
+  a {
+    color: inherit;
+  }
+}
+#navBar {
+  .navbar {
+    a.item_active {
+      background-color: #e789ba;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

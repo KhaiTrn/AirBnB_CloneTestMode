@@ -1,0 +1,19 @@
+.slick-prev,
+.slick-next {
+  z-index: 10; /* Đảm bảo mũi tên nằm trên slide */
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: gray;
+  display: flex;
+}
+
+.slick-disabled {
+  opacity: 0;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,27 @@
+.ant-picker {
+  // border: none;
+  // padding: unset;
+  outline: unset;
+  background-color: transparent;
+  .ant-picker-input > input:focus {
+    outline: none;
+    box-shadow: unset;
+  }
+}
+
+.ant-picker-outlined:focus-within {
+  box-shadow: unset;
+}
+
+.ant-picker-outlined:hover {
+  background-color: transparent;
+}
+
+.header-dropdown-menu {
+  ul {
+    padding: 8px 0 !important;
+    li {
+      padding: 0 !important;
+    }
+  }
+}

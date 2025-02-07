@@ -1,0 +1,14 @@
+.carousel_custom {
+  .slick-next {
+    right: -10px;
+  }
+  .slick-next::before {
+    font-size: 28px;
+  }
+  .slick-prev {
+    left: -21px;
+  }
+  .slick-prev::before {
+    font-size: 28px;
+  }
+}
