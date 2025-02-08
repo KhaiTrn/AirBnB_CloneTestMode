@@ -1,4 +1,4 @@
-import { get, ref } from "firebase/database";
+import { get, ref, set } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import { database } from "../../../firebase/config";
 
@@ -15,22 +15,22 @@ import {
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const VisitCounter = () => {
+  const [todayVisits, setTodayVisits] = useState(0);
   const [weekVisits, setWeekVisits] = useState([]);
   const [labels, setLabels] = useState([]);
 
   const getLast7DaysVisits = async () => {
-    const now = new Date();
     let total = [];
     let days = [];
 
     for (let i = 6; i >= 0; i--) {
+      const now = new Date();
       const pastDate = new Date(now);
       pastDate.setDate(now.getDate() - i);
 
       const year = pastDate.getFullYear();
       const month = String(pastDate.getMonth() + 1).padStart(2, "0");
       const day = String(pastDate.getDate()).padStart(2, "0");
-
       const visitRef = ref(database, `visits/${year}/${month}/${day}`);
       const snapshot = await get(visitRef);
       total.push(snapshot.exists() ? snapshot.val() : 0);
@@ -42,6 +42,18 @@ const VisitCounter = () => {
   };
 
   useEffect(() => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+
+    const visitRef = ref(database, `visits/${year}/${month}/${day}`);
+
+    get(visitRef).then((snapshot) => {
+      let currentVisits = snapshot.exists() ? snapshot.val() : 0;
+      set(visitRef, currentVisits + 1);
+      setTodayVisits(currentVisits + 1);
+    });
     getLast7DaysVisits();
   }, []);
 
@@ -66,6 +78,7 @@ const VisitCounter = () => {
   return (
     <div>
       <h2>Thống kê lượt truy cập</h2>
+      <h1>Lượt truy cập hôm nay: {todayVisits}</h1>
       <Bar data={data} />
     </div>
   );
