@@ -6,6 +6,7 @@ import { userService } from "../../services/users.service";
 import TopRoomsChart from "./components/TopRoomsChart";
 import { setRoomService } from "../../services/setRoom.service";
 import { phongService } from "../../services/phong.service";
+import VisitCounter from "./components/VisitCounter";
 
 const MOCKUP_DATA_DASHBOARD = [
   {
@@ -91,6 +92,9 @@ const DashBoard = () => {
       <LineSpace />
       <div className="w-full rounded-2xl bg-white p-12 hidden md:block">
         <TopRoomsChart bookingData={listSetRoom} roomData={listRoom} />
+      </div>
+      <div className="w-1/2">
+        <VisitCounter />
       </div>
     </div>
   );
